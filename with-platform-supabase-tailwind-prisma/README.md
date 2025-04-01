@@ -1,3 +1,172 @@
+# Platform Starter Kit with Supabase, Tailwind, and Prisma
+
+A comprehensive platform starter kit built with Next.js, integrating Supabase for backend services, Tailwind CSS for styling, Prisma for database management, and Cal.com for scheduling functionality.
+
+## Technology Stack
+
+- **Frontend**: Next.js 14.3.0
+- **Styling**: Tailwind CSS
+- **Database ORM**: Prisma
+- **Backend Services**: Supabase
+- **Authentication**: NextAuth.js
+- **Scheduling**: Cal.com
+- **Package Manager**: pnpm
+- **Type Safety**: TypeScript
+- **API Layer**: tRPC
+
+## Directory Structure
+
+```bash
+.
+├── prisma/                 # Prisma schema and migrations
+│   ├── migrations/         # Database migrations
+│   ├── schema.prisma       # Database schema
+│   └── seed.ts             # Seed file for initial data
+├── public/                 # Static assets
+├── src/
+│   ├── app/                # Next.js App Router components
+│   │   ├── _components/    # Shared components
+│   │   ├── api/            # API routes
+│   │   └── [...]/          # Page routes
+│   ├── cal/                # Cal.com integration
+│   │   └── __generated/    # Generated Cal.com SDK
+│   ├── components/         # Reusable UI components
+│   ├── config/             # Configuration files
+│   ├── lib/                # Utility functions
+│   ├── server/            # Server-side code
+│   │   └── api/           # tRPC API definitions
+│   └── types/             # TypeScript type definitions
+├── .env                   # Environment variables
+├── .env.example           # Example environment variables
+└── package.json           # Project dependencies
+```
+
+## Component Description
+
+### Core Components
+
+- `src/app/_components/`
+  - `use-cal.tsx`: Cal.com integration component
+  - `providers.tsx`: Global providers wrapper
+  - Other shared components...
+
+### Feature Components
+
+1. **Authentication**
+   - Sign In/Sign Up forms
+   - OAuth providers integration
+   - Session management
+
+2. **User Profile**
+   - Profile editing
+   - Settings management
+   - Avatar handling
+
+3. **Cal.com Integration**
+   - Booking system
+   - Calendar integration
+   - Availability management
+
+4. **Database Schema**
+   - User model
+   - Profile model
+   - Related data models
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm 8+
+- Supabase account
+- Cal.com account
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd platform-starter-kit
+```
+
+2. Install dependencies
+```bash
+pnpm install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env
+```
+
+4. Initialize the database
+```bash
+pnpm prisma migrate dev
+pnpm prisma db seed
+```
+
+5. Start the development server
+```bash
+pnpm dev
+```
+
+## Development Workflow
+
+### Database Changes
+
+1. Modify the schema in `prisma/schema.prisma`
+2. Generate migrations:
+```bash
+pnpm prisma migrate dev
+```
+
+### Cal.com Integration
+
+1. Generate Cal.com SDK:
+```bash
+pnpm cal:generate
+```
+
+2. Use Cal.com components:
+```typescript
+import { Button, Avatar } from '@calcom/atoms'
+```
+
+### Environment Variables
+
+Required environment variables:
+- `POSTGRES_PRISMA_URL`: Supabase database URL
+- `POSTGRES_URL_NON_POOLING`: Non-pooling database URL
+- `NEXT_PUBLIC_SUPABASE_URL`: Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Supabase anonymous key
+- `AUTH_SECRET`: NextAuth secret
+- Cal.com related keys
+
+## Deployment
+
+The application can be deployed to various platforms:
+
+### Vercel
+
+1. Connect your repository to Vercel
+2. Set up environment variables
+3. Deploy
+
+### Docker
+
+A Dockerfile is provided for containerized deployment.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Open a pull request
+
+## License
+
+MIT
+
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/calcom/cal.com">
